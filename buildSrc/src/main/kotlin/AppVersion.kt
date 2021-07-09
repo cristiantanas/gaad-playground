@@ -5,7 +5,8 @@ class AppVersion private constructor(
     major: Int,
     minor: Int,
     patch: Int,
-    build: Int) {
+    build: Int
+) {
 
     val versionCode: Int = major * 100000000 + minor * 1000000 + patch * 10000 + build
     val versionName: String = "$major.$minor.${patch}_$build"

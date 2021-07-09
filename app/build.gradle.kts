@@ -53,8 +53,8 @@ android.applicationVariants.all {
         if (output is com.android.build.gradle.internal.api.BaseVariantOutputImpl) {
             output.outputFileName =
                 ProjectConfig.applicationName.replace("\\s".toRegex(), "") +
-                        "-v${versionName}" +
-                        "(${versionCode})" +
+                        "-v$versionName" +
+                        "($versionCode)" +
                         ".${output.outputFile.extension}"
         }
     }
