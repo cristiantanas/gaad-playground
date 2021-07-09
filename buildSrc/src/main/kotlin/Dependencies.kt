@@ -12,6 +12,10 @@ object Dependencies {
         const val gradle = "com.android.tools.build:gradle:${Version.AGP}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.KOTLIN}"
     }
+
+    object Plugin {
+        const val jacoco = "org.gradle.jacoco"
+    }
 }
 
 object Version {
@@ -21,6 +25,7 @@ object Version {
     const val CORE_KTX = "1.6.0"
     const val ESPRESSO = "3.4.0"
     const val EXT_JUNIT = "1.1.3"
+    const val JACOCO = "0.8.5"
     const val JUNIT = "4.13.2"
     const val KOTLIN = "1.5.20"
     const val MATERIAL = "1.4.0"
