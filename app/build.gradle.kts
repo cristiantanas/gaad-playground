@@ -3,6 +3,8 @@ plugins {
     kotlin("android")
 }
 
+val appVersion = AppVersion.of("version.properties")
+
 android {
     compileSdkVersion(30)
 
@@ -10,8 +12,8 @@ android {
         applicationId = "com.ctanas.android.alerts"
         minSdkVersion(24)
         targetSdkVersion(30)
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = appVersion.versionCode
+        versionName = appVersion.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
