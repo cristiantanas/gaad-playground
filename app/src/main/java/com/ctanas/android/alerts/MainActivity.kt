@@ -1,4 +1,4 @@
-    package com.ctanas.android.alerts
+ package com.ctanas.android.alerts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
