@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.CONFIGURATION_DETEKT_PLUGINS
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -7,6 +9,7 @@ buildscript {
     dependencies {
         classpath(Dependencies.Classpath.gradle)
         classpath(Dependencies.Classpath.kotlin)
+        classpath(Dependencies.Classpath.detekt)
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -21,6 +24,54 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+
+    apply(plugin = Dependencies.Plugin.detekt)
+
+    configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+        toolVersion = Version.DETEKT
+        config = rootProject.files("detekt-config.yml")
+
+        autoCorrect = false
+        buildUponDefaultConfig = true
+        ignoreFailures = true
+
+        reports {
+            html.enabled = true
+            xml.enabled = true
+            txt.enabled = false
+            sarif {
+                enabled = false
+            }
+        }
+    }
+
+    val detektPlugins = configurations.getByName(CONFIGURATION_DETEKT_PLUGINS)
+    dependencies {
+        detektPlugins(Dependencies.detektFormatting)
+    }
+
+    tasks.register<io.gitlab.arturbosch.detekt.Detekt>("detektFormat") {
+        description = "Applies detekt-formatting to the whole project"
+
+        autoCorrect = true
+        buildUponDefaultConfig = true
+        ignoreFailures = true
+
+        setSource(files(projectDir))
+        include("**/*.kt")
+        exclude("**/*.kts")
+        exclude("**/resources/**")
+        exclude("**/build/**")
+
+        reports {
+            html.enabled = true
+            xml.enabled = true
+            txt.enabled = false
+            sarif {
+                enabled = false
+            }
+        }
     }
 }
 
@@ -44,8 +95,8 @@ subprojects {
         }
 
         val classes = listOf(
-            "${buildDir}/intermediates/javac/debug/classes",
-            "${buildDir}/tmp/kotlin-classes/debug"
+            "$buildDir/intermediates/javac/debug/classes",
+            "$buildDir/tmp/kotlin-classes/debug"
         )
 
         val mainSrc = listOf(

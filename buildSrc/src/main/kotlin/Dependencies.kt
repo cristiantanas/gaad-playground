@@ -5,16 +5,19 @@ object Dependencies {
     const val androidxConstraintLayout = "androidx.constraintlayout:constraintlayout:${Version.CONSTRAINT_LAYOUT}"
     const val androidxEspresso = "androidx.test.espresso:espresso-core:${Version.ESPRESSO}"
     const val androidxExtJUnit = "androidx.test.ext:junit:${Version.EXT_JUNIT}"
+    const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Version.DETEKT}"
     const val junit = "junit:junit:${Version.JUNIT}"
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN}"
 
     object Classpath {
         const val gradle = "com.android.tools.build:gradle:${Version.AGP}"
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.KOTLIN}"
+        const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:${Version.DETEKT}"
     }
 
     object Plugin {
         const val jacoco = "org.gradle.jacoco"
+        const val detekt = "io.gitlab.arturbosch.detekt"
     }
 }
 
@@ -23,6 +26,7 @@ object Version {
     const val APP_COMPAT = "1.3.0"
     const val CONSTRAINT_LAYOUT = "2.0.4"
     const val CORE_KTX = "1.6.0"
+    const val DETEKT = "1.17.1"
     const val ESPRESSO = "3.4.0"
     const val EXT_JUNIT = "1.1.3"
     const val JACOCO = "0.8.5"
