@@ -47,3 +47,15 @@ dependencies {
     androidTestImplementation(Dependencies.androidxExtJUnit)
     androidTestImplementation(Dependencies.androidxEspresso)
 }
+
+android.applicationVariants.all {
+    outputs.forEach { output ->
+        if (output is com.android.build.gradle.internal.api.BaseVariantOutputImpl) {
+            output.outputFileName =
+                ProjectConfig.applicationName.replace("\\s".toRegex(), "") +
+                        "-v${versionName}" +
+                        "(${versionCode})" +
+                        ".${output.outputFile.extension}"
+        }
+    }
+}
