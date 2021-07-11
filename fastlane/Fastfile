@@ -1,0 +1,51 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Cleans the current workspace"
+  lane :clean do
+    gradle(task: "clean")
+  end
+
+  desc "Sets the project configuration prior to a build"
+  lane :setup do
+    update_build_number
+  end
+
+  desc "Builds a release version of the application"
+  lane :build do
+    gradle(task: "assembleRelease")
+  end
+
+  desc "Runs all the unit tests"
+  lane :unit_test do
+    gradle(task: "test")
+  end
+
+  private_lane :update_build_number do
+    build_number = get_properties_value(
+        key: "VERSION_BUILD",
+        path: "./version.properties"
+        )
+
+    set_properties_value(
+        key: "VERSION_BUILD",
+        path: "./version.properties",
+        value: "#{build_number.to_i + 1}"
+    )
+  end
+end
