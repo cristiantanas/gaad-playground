@@ -43,6 +43,9 @@ dependencies {
     implementation(Dependencies.androidxCompat)
     implementation(Dependencies.androidMaterial)
     implementation(Dependencies.androidxConstraintLayout)
+
+    implementation(Dependencies.koinAndroid)
+
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidxExtJUnit)
     androidTestImplementation(Dependencies.androidxEspresso)

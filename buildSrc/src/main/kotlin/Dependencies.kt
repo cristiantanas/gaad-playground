@@ -7,6 +7,7 @@ object Dependencies {
     const val androidxExtJUnit = "androidx.test.ext:junit:${Version.EXT_JUNIT}"
     const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Version.DETEKT}"
     const val junit = "junit:junit:${Version.JUNIT}"
+    const val koinAndroid = "io.insert-koin:koin-android:${Version.KOIN}"
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN}"
 
     object Classpath {
@@ -31,6 +32,7 @@ object Version {
     const val EXT_JUNIT = "1.1.3"
     const val JACOCO = "0.8.5"
     const val JUNIT = "4.13.2"
+    const val KOIN = "3.1.2"
     const val KOTLIN = "1.5.20"
     const val MATERIAL = "1.4.0"
 }
